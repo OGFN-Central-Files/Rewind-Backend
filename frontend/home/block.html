@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewind | No Permissions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00c6ff;
+            --secondary: #92fe9d;
+            --dark: #0a0a0a;
+            --light-text: #ffffff;
+            --gray-text: #a0a0a0;
+        }
+
+        body {
+            background: #121117;
+            font-family: 'Inter', sans-serif;
+            color: var(--light-text);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom right, rgba(76, 29, 149, 0.2), rgba(88, 28, 135, 0.1));
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-squares {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .floating-squares div {
+            position: absolute;
+            width: 10rem;
+            height: 10rem;
+            border-radius: 2rem;
+            opacity: 0.12;
+            backdrop-filter: blur(100px);
+            animation: float 25s infinite linear;
+            bottom: -250px;
+        }
+
+        .floating-squares div:nth-child(1) { left: 5%; animation-duration: 25s; background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%); }
+        .floating-squares div:nth-child(2) { left: 25%; animation-duration: 28s; animation-delay: -10s; background: linear-gradient(135deg, #303030 0%, #3a3a3a 100%); }
+        .floating-squares div:nth-child(3) { left: 45%; animation-duration: 27s; animation-delay: -5s; background: linear-gradient(135deg, #353535 0%, #2a2a2a 100%); }
+        .floating-squares div:nth-child(4) { left: 65%; animation-duration: 29s; animation-delay: -15s; background: linear-gradient(135deg, #3a3a3a 0%, #303030 100%); }
+        .floating-squares div:nth-child(5) { left: 85%; animation-duration: 24s; animation-delay: -8s; background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%); }
+        .floating-squares div:nth-child(6) { left: 15%; animation-duration: 26s; animation-delay: -12s; background: linear-gradient(135deg, #303030 0%, #3a3a3a 100%); }
+        .floating-squares div:nth-child(7) { left: 35%; animation-duration: 23s; animation-delay: -18s; background: linear-gradient(135deg, #353535 0%, #2a2a2a 100%); }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.12;
+            }
+            100% {
+                transform: translateY(-2000px) rotate(360deg);
+                opacity: 0.12;
+            }
+        }
+
+        @keyframes slide-bounce {
+            0% { transform: translateY(20px); opacity: 0; }
+            60% { transform: translateY(-10px); }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .center-display-box {
+            background: rgba(34, 34, 34, 0.2);
+            backdrop-filter: blur(12px);
+            width: 28vw;
+            height: auto;
+            max-width: 90%;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: slide-bounce 0.5s ease-out forwards;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-image: url("https://cdn-icons-png.flaticon.com/512/1828/1828843.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-bottom: 1rem;
+        }
+
+        .login-title {
+            font-size: 2.5rem;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .warning-text {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        .button {
+            background: rgba(26, 26, 26, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .button:hover {
+            background: rgba(34, 34, 34, 0.4);
+            transform: scale(1.02);
+        }
+
+        .button:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 768px) {
+            .center-display-box {
+                width: 80vw;
+                padding: 2rem 1.5rem;
+            }
+            .login-title {
+                font-size: 2rem;
+            }
+            .desc, .warning-text {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .center-display-box {
+                width: 90vw;
+                padding: 2rem 1rem;
+            }
+            .login-title {
+                font-size: 1.75rem;
+            }
+            .desc, .warning-text {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="floating-squares">
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
+    <div class="center-display-box">
+        <div class="logo" style="background-image: url('https://cdn-icons-png.flaticon.com/512/1828/1828843.png');"></div>
+        <div class="login-title">Servers Offline</div>
+        <div class="desc">
+            You do not have permissions to login.
+        </div>
+        <div class="warning-text">
+            You are currently missing permissions to login to Rewind<br>
+        </div>
+        <div class="button" onclick="window.location.href='https://x.com/PrivateUserDev'">
+            Check our X account!
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{
+    "events": [
+        {
+            "id": 1,
+            "name": "Rewind Return!",
+            "cardName": "Rewind Return!",
+            "Thumbnail": "https://public-service-live.ol.privateuser.xyz/ch3-keyart.jpg",
+            "eventBackground": "https://public-service-live.ol.privateuser.xyz/ch3-keyart.jpg",
+            "eventDescription": "Rewind has returned and better than ever, now with vastly improved servers and a brand-new, optimized launcher! Enjoy and Join the Discord Server below to stay up to date!",
+            "ButtonText": "Discord",
+            "ButtonIco": "FaDiscord",
+            "IcoColor": "#FFFFFF",
+            "ButtonRedirectURL": "https://discord.gg/Rewindogfn",
+            "ButtonColor": "#5865F2",
+            "ButtonTextColor": "#FFFFFF",
+            "frameText": "Rewind: News",
+            "audioUrl":"https://fortnite.gg/img/items/3352/audio.mp3?1",
+            "active": true
+        },
+        {
+            "id": 2,
+            "name": "Rewind's PRIME is BACK!",
+            "cardName": "Chapter 3 Season 1",
+            "Thumbnail": "https://wallpapercat.com/w/full/6/e/b/1180-3840x2160-desktop-4k-fortnite-background-image.jpg",
+            "eventBackground": "https://wallpapercat.com/w/full/6/e/b/1180-3840x2160-desktop-4k-fortnite-background-image.jpg",
+            "eventDescription": "Rewind's PRIME is BACK!",
+            "ButtonText": "Launch",
+            "ButtonIco": "FaPlay",
+            "IcoColor": "#000000",
+            "ButtonRedirectURL": "com.Rewindservices://launch/quickaction/launcher?v=19.10",
+            "ButtonColor": "#f6eb16",
+            "ButtonTextColor": "#000000",
+            "frameText": "Fortnite 19.10",
+            "audioUrl":"https://fortnite.gg/img/items/4450/audio.mp3?1",
+            "active": true
+        },
+        {
+            "id": 3,
+            "name": "Rewind Discord Server!",
+            "cardName": "Rewind Discord",
+            "Thumbnail": "https://images.hdqwalls.com/download/fortnite-galaxy-blue-2021-4k-iq-1920x1080.jpg",
+            "eventBackground": "https://images.hdqwalls.com/download/fortnite-galaxy-blue-2021-4k-iq-1920x1080.jpg",
+            "eventDescription": "Join Rewind's official Discord server and become a part of our community! Stay updated on the latest news and features! Click the button below to join now!",
+            "ButtonText": "Discord",
+            "ButtonIco": "FaDiscord",
+            "IcoColor": "#FFFFFF",
+            "ButtonRedirectURL": "https://discord.gg/Rewindogfn",
+            "ButtonColor": "#5865F2",
+            "ButtonTextColor": "#FFFFFF",
+            "frameText": "Rewind: News",
+            "audioUrl":"https://fortnite.gg/img/items/3349/audio.mp3?1",
+            "active": true
+        },
+        {
+            "id": 4,
+            "name": "Donate to Rewind!",
+            "cardName": "Donate to Rewind!",
+            "Thumbnail": "https://public-service-live.ol.privateuser.xyz/Rewind_Donations.png",
+            "eventBackground": "https://public-service-live.ol.privateuser.xyz/Rewind_Donations.png",
+            "eventDescription": "Support Rewind by donating! Your contributions help us maintain and improve the launcher, servers, and community! Click the button below to donate now!",
+            "ButtonText": "Donate",
+            "ButtonIco": "FaHandHoldingHeart",
+            "IcoColor": "#000000",
+            "ButtonRedirectURL": "https://discord.gg/Rewindogfn",
+            "ButtonColor": "#FFFFFF",
+            "ButtonTextColor": "#000000",
+            "frameText": "Rewind: News",
+            "audioUrl":"https://fortnite.gg/img/items/3365/audio.mp3?1",
+            "active": false
+        }
+    ]
+}

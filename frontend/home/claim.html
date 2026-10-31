@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rewind | Daily Rewards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #00c6ff;
+      --secondary: #92fe9d;
+      --dark: #0a0a0a;
+      --light-text: #ffffff;
+      --gray-text: #a0a0a0;
+    }
+
+    .bg-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, rgba(76, 29, 149, 0.2), rgba(88, 28, 135, 0.1));
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    body {
+      background: #121117;
+      font-family: 'Inter', sans-serif;
+      color: var(--light-text);
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-squares {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .floating-squares div {
+      position: absolute;
+      width: 10rem;
+      height: 10rem;
+      border-radius: 2rem;
+      opacity: 0.12;
+      backdrop-filter: blur(100px);
+      animation: float 25s infinite linear;
+      bottom: -250px; 
+    }
+
+    .floating-squares div:nth-child(1) { left: 5%; animation-duration: 25s; background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%); }
+    .floating-squares div:nth-child(2) { left: 25%; animation-duration: 28s; animation-delay: -10s; background: linear-gradient(135deg, #303030 0%, #3a3a3a 100%); }
+    .floating-squares div:nth-child(3) { left: 45%; animation-duration: 27s; animation-delay: -5s; background: linear-gradient(135deg, #353535 0%, #2a2a2a 100%); }
+    .floating-squares div:nth-child(4) { left: 65%; animation-duration: 29s; animation-delay: -15s; background: linear-gradient(135deg, #3a3a3a 0%, #303030 100%); }
+    .floating-squares div:nth-child(5) { left: 85%; animation-duration: 24s; animation-delay: -8s; background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%); }
+    .floating-squares div:nth-child(6) { left: 15%; animation-duration: 26s; animation-delay: -12s; background: linear-gradient(135deg, #303030 0%, #3a3a3a 100%); }
+    .floating-squares div:nth-child(7) { left: 35%; animation-duration: 23s; animation-delay: -18s; background: linear-gradient(135deg, #353535 0%, #2a2a2a 100%); }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.12; }
+      100% { transform: translateY(-2000px) rotate(360deg); opacity: 0.12; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .center-display-box {
+      width: 90vw;
+      max-width: 1000px;
+      background: rgba(34, 34, 34, 0.2);
+      backdrop-filter: blur(12px);
+      border-radius: 2vh;
+      padding: 2rem;
+      z-index: 1;
+      border: 1px solid #31313142;
+      animation: fadeIn 0.5s ease-out forwards;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .server-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      overflow-y: auto;
+      max-height: 60vh;
+      padding-right: 10px;
+    }
+
+    .server-box {
+      background: #1e1e24;
+      border-radius: 1vh;
+      padding: 1rem 1.5rem;
+      border: 1px solid #2f2f35;
+      position: relative;
+    }
+
+    .server-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--light-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-container {
+      background: #2b2b31;
+      height: 14px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 0.4rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .session-info {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .server-name { font-size: 1rem; }
+      .session-info { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="floating-squares">
+    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  </div>
+
+  <div class="center-display-box">
+    <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem;">Hello, <span id="username">privateuser</span>! 🎉</h2>
+    <div class="server-list" id="rewardList"></div>
+    <p id="noRewardsMessage" style="color: var(--gray-text); font-size: 1.2rem; text-align: center; display: none;">No rewards available. Come back tomorrow!</p>
+  </div>
+
+  <script>
+    const username = "privateuser";
+    document.getElementById("username").textContent = username;
+
+    const rewards = [
+      { day: "Day 1", reward: "100 gay", progress: 50 },
+    ];
+
+    const rewardList = document.getElementById("rewardList");
+    const noRewardsMessage = document.getElementById("noRewardsMessage");
+
+    if (rewards.length > 0) {
+      rewards.forEach(reward => {
+        const box = document.createElement("div");
+        box.className = "server-box";
+        box.innerHTML = `
+          <div class="server-name">${reward.day} — ${reward.reward}</div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: ${reward.progress}%"></div>
+          </div>
+          <div class="session-info">${reward.progress === 100 ? "Claimed" : "Not yet claimed"}</div>
+        `;
+        rewardList.appendChild(box);
+      });
+    } else {
+      noRewardsMessage.style.display = "block";
+    }
+  </script>
+</body>
+</html>

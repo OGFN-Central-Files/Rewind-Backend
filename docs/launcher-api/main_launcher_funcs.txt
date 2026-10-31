@@ -1,0 +1,29 @@
+Launcher-API Documentation
+### You are strictly prohibited from giving any of this documentation other then "mars" or "privateuser". doing so will result in a permanent ban from Rewind and its services.
+
+## api/v2/Rewind/launcher/decode?token={TOKEN}
+Method: GET
+Query: ?token={TOKEN}
+Endpoint: api/v2/Rewind/launcher/decode
+Doc: This endpoint will return a JSON response containing username, email, password and the accountId of the user.
+The token in the query of the URL has to be replaced with the actual launcher token the launcher has received after authentication with discord.
+
+## /api/v2/Rewind/discord
+Method: GET
+Query: None
+Endpoint: /api/v2/Rewind/discord
+Doc: This endpoint will redirect to a discord authentication page (discord oAuth), once the authentication succeeded it will do all required permission checks,
+It will redirect to a page which can be found at 'frontend/oauth/index.html', this page will then have a continue button which will open the Rewind launcher with a launcher-token
+The launcher token can be used at "api/v2/Rewind/launcher/decode" to retrieve username, accountid, password & the email.
+
+## /api/v2/Rewind/launcher/ban_check?token={TOKEN}
+Method: GET
+Query: ?token={TOKEN}
+Endpoint: /api/v2/Rewind/launcher/ban_check
+This endpoint will return a JSON response containing "bLogout: boolean", "bBanned: boolean", "logoutReason: string".
+The token in the query of the URL has to be replaced with the actual launcher token the launcher has received after authentication with discord.
+The launcher is not required to logout the user if bLogout is false, even if banned. do NOT logout the user unless bLogout is true. 
+logoutReason is a string containing the reason for the logout (E.G: "Banned")
+
+This document contains sensitive information towards the Rewinds API service (Codenamed: aventis), Sharing this information will result in a permanent ban.
+©Rewind. 2025

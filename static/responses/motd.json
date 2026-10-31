@@ -1,0 +1,135 @@
+{
+  "contentType": "collection",
+  "contentId": "motd-default-collection",
+  "tcId": "634e8e85-e2fc-4c68-bb10-93604cf6605f",
+  "contentMeta": "{\"ee4bbb74ba76ef92e1303e839abeaa42\":[\"d6bb7afb-63eb-4348-8d7d-c3d72c801294\"],\"dd484731b31d032d925f9856a1918a9c\":[\"c565dde9-e269-4552-8174-ba0f0f77f144\"],\"5b893e46b65641216e3a97bd533a3fe9\":[\"e268b405-1513-4b6d-aa9c-e29fc1296794\"],\"2dd1a586bf81687c11c496f028077e82\":[\"a5227131-c79c-4e9f-bf55-3c9007ad9b20\"]}",
+  "contentItems": [
+    {
+      "contentType": "content-item",
+      "contentId": "46874c56-0973-4cbe-ac98-b580c5b36df5",
+      "tcId": "61fb3dd8-f23d-45cc-9058-058ab223ba5c",
+      "contentFields": {
+        "body": {
+          "ar": "Rewind is finally back, are you ready for what's next?",
+          "en": "Rewind is finally back, are you ready for what's next?",
+          "de": "Rewind is finally back, are you ready for what's next?",
+          "es": "Rewind is finally back, are you ready for what's next?",
+          "es-419": "Rewind is finally back, are you ready for what's next?",
+          "fr": "Rewind is finally back, are you ready for what's next?",
+          "it": "Rewind is finally back, are you ready for what's next?",
+          "ja": "Rewind is finally back, are you ready for what's next?",
+          "ko": "Rewind is finally back, are you ready for what's next?",
+          "pl": "Rewind is finally back, are you ready for what's next?",
+          "pt-BR": "Rewind is finally back, are you ready for what's next?",
+          "ru": "Rewind is finally back, are you ready for what's next?",
+          "tr": "Rewind is finally back, are you ready for what's next?"
+        },
+        "FullScreenBody": {
+          "ar": "Rewind is finally back, are you ready for what's next?",
+          "en": "Rewind is finally back, are you ready for what's next?",
+          "de": "Rewind is finally back, are you ready for what's next?",
+          "es": "Rewind is finally back, are you ready for what's next?",
+          "es-419": "Rewind is finally back, are you ready for what's next?",
+          "fr": "Rewind is finally back, are you ready for what's next?",
+          "it": "Rewind is finally back, are you ready for what's next?",
+          "ja": "Rewind is finally back, are you ready for what's next?",
+          "ko": "Rewind is finally back, are you ready for what's next?",
+          "pl": "Rewind is finally back, are you ready for what's next?",
+          "pt-BR": "Rewind is finally back, are you ready for what's next?",
+          "ru": "Rewind is finally back, are you ready for what's next?",
+          "tr": "Rewind is finally back, are you ready for what's next?"
+        },
+        "entryType": "Website",
+        "image": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "url": "https://public-service-live.ol.privateuser.xyz/banner.jpg"
+          }
+        ],
+        "FullScreenBackground": {
+          "Image": [
+            {
+              "width": 1920,
+              "height": 1080,
+              "url": "https://public-service-live.ol.privateuser.xyz/banner.jpg"
+            }
+          ],
+          "_type": "FullScreenBackground"
+        },
+        "tabTitleOverride": "Rewind's Return",
+        "TeaserTitle": {
+          "ar": "Rewind is BACK!",
+          "en": "Rewind is BACK!",
+          "de": "Rewind is BACK!",
+          "es": "Rewind is BACK!",
+          "es-419": "Rewind is BACK!",
+          "fr": "Rewind is BACK!",
+          "it": "Rewind is BACK!",
+          "ja": "Rewind is BACK!",
+          "ko": "Rewind is BACK!",
+          "pl": "Rewind is BACK!",
+          "pt-BR": "Rewind is BACK!",
+          "ru": "Rewind is BACK!",
+          "tr": "Rewind is BACK!"
+        },
+        "tileImage": [
+          {
+            "width": 1024,
+            "height": 512,
+            "url": "https://public-service-live.ol.privateuser.xyz/banner_preview.jpg"
+          }
+        ],
+        "TeaserBackground": {
+          "Image": [
+            {
+              "width": 1024,
+              "height": 512,
+              "url": "https://public-service-live.ol.privateuser.xyz/banner_preview.jpg"
+            }
+          ],
+          "_type": "TeaserBackground"
+        },
+        "title": {
+          "ar": "Rewind is BACK!",
+          "en": "Rewind is BACK!",
+          "de": "Rewind is BACK!",
+          "es": "Rewind is BACK!",
+          "es-419": "Rewind is BACK!",
+          "fr": "Rewind is BACK!",
+          "it": "Rewind is BACK!",
+          "ja": "Rewind is BACK!",
+          "ko": "Rewind is BACK!",
+          "pl": "Rewind is BACK!",
+          "pt-BR": "Rewind is BACK!",
+          "ru": "Rewind is BACK!",
+          "tr": "Rewind is BACK!"
+        },
+        "FullScreenTitle": {
+          "ar": "Rewind is BACK!",
+          "en": "Rewind is BACK!",
+          "de": "Rewind is BACK!",
+          "es": "Rewind is BACK!",
+          "es-419": "Rewind is BACK!",
+          "fr": "Rewind is BACK!",
+          "it": "Rewind is BACK!",
+          "ja": "Rewind is BACK!",
+          "ko": "Rewind is BACK!",
+          "pl": "Rewind is BACK!",
+          "pt-BR": "Rewind is BACK!",
+          "ru": "Rewind is BACK!",
+          "tr": "Rewind is BACK!"
+        },
+        "VerticalTextLayout": false,
+        "videoAutoplay": false,
+        "videoLoop": false,
+        "videoMute": false,
+        "videoStreamingEnabled": false,
+        "websiteButtonText": "FullScreenBackground",
+        "websiteURL": "discord.gg/Rewindogfn"
+      },
+      "contentHash": "hash",
+      "contentSchemaName": "MotdWebsiteNewsWithVideo"
+    }
+  ]
+}

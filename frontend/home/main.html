@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rewind | Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #00c6ff;
+      --secondary: #92fe9d;
+      --dark: #0a0a0a;
+      --light-text: #ffffff;
+      --gray-text: #a0a0a0;
+    }
+    body {
+      background: #121117;
+      font-family: 'Inter', sans-serif;
+      color: var(--light-text);
+      line-height: 1.6;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .floating-squares {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      overflow: hidden; z-index: 0;
+      pointer-events: none;
+    }
+    .floating-squares div {
+      position: absolute;
+      width: 200px; height: 200px;
+      background: rgba(27, 27, 27, 0.9);
+      animation: floatSquares 30s linear infinite;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      bottom: -250px;
+    }
+    .floating-squares div:nth-child(1) { left: 5%; animation-duration: 25s; }
+    .floating-squares div:nth-child(2) { left: 25%; animation-duration: 28s; animation-delay: -10s; }
+    .floating-squares div:nth-child(3) { left: 45%; animation-duration: 27s; animation-delay: -5s; }
+    .floating-squares div:nth-child(4) { left: 65%; animation-duration: 29s; animation-delay: -15s; }
+    .floating-squares div:nth-child(5) { left: 85%; animation-duration: 24s; animation-delay: -8s; }
+    .floating-squares div:nth-child(6) { left: 15%; animation-duration: 26s; animation-delay: -12s; }
+    .floating-squares div:nth-child(7) { left: 35%; animation-duration: 23s; animation-delay: -18s; }
+
+    @keyframes floatSquares {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(-2000px) rotate(360deg); opacity: 0.8; }
+    }
+
+    .sidebar {
+      width: 250px;
+      background: rgba(30, 30, 34, 0.9);
+      border-right: 1px solid #31313142;
+      height: 100vh;
+      padding-top: 20px;
+      position: relative;
+      z-index: 2;
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .sidebar h2 {
+      text-align: center;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      margin-bottom: 30px;
+      font-size: 24px;
+      color: var(--light-text);
+    }
+    .sidebar button {
+      background: none;
+      border: none;
+      color: var(--light-text);
+      text-align: left;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      width: 100%;
+    }
+    .sidebar button:hover,
+    .sidebar button.active {
+      background: var(--primary);
+      color: black;
+    }
+
+    .top-bar {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+      font-size: 0.95rem;
+      z-index: 2;
+    }
+
+    .center-login-box {
+      background: rgba(24, 24, 28, 0.85);
+      width: 360px;
+      padding: 30px;
+      border-radius: 15px;
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+    .center-login-box h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+    .center-login-box input {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      background: #1e1e24;
+      color: white;
+    }
+    .center-login-box button {
+      background: var(--primary);
+      border: none;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .center-login-box button:hover { background: #009edb; }
+    .error-msg {
+      color: #ff5f5f;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .main-dashboard {
+      display: none;
+      z-index: 1;
+      position: absolute;
+      left: 250px;
+      top: 60px;
+      padding: 20px;
+      color: white;
+      width: calc(100% - 250px);
+    }
+
+    .tags {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .tag-btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: #1e1e24;
+      color: var(--light-text);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .tag-btn:hover,
+    .tag-btn.active { background: var(--primary); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -40%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    .settings-section {
+      display: none;
+      padding: 20px;
+      color: white;
+      background: rgba(24, 24, 28, 0.85);
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .settings-section h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .settings-section .option {
+      margin-bottom: 15px;
+    }
+
+    .settings-section label {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .settings-section button {
+      padding: 8px 16px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .user-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-height: 800px;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
+    .user-item {
+      background: rgba(24, 24, 28, 0.85);
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .user-item button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .modal {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(24, 24, 28, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      display: none;
+    }
+
+    .modal-header {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--light-text);
+    }
+
+    .modal-line {
+      border-top: 1px solid var(--gray-text);
+      margin: 10px 0;
+    }
+
+    .modal-details {
+      font-size: 14px;
+      color: var(--gray-text);
+      margin-bottom: 15px;
+    }
+
+    .modal-details span {
+      font-weight: 600;
+    }
+
+    .modal-btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .modal-btn {
+      padding: 8px 16px;
+      background: var(--primary);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .modal-btn:hover {
+      background: #009edb;
+    }
+
+    .modal-close-btn {
+      background: #f44336;
+    }
+
+    .modal-close-btn:hover {
+      background: #d32f2f;
+    }
+
+    #errorMessage {
+      color: red;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .log-entries {
+      max-height: 750px; 
+      overflow-y: auto;
+      padding-right: 5px; 
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-squares">
+    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <h2>Rewind</h2>
+    <button id="usersBtn"><i class="fas fa-users"></i> &nbsp; Users</button>
+    <button id="auditBtn"><i class="fas fa-clipboard-list"></i> &nbsp; Audit Log</button>
+    <button id="settingsBtn"><i class="fas fa-cogs"></i> &nbsp; Settings</button>
+    <button id="serverStatsBtn"><i class="fas fa-server"></i> &nbsp; Server</button>
+  </div>
+
+  <div class="top-bar">
+    RewindDashboard 1.0.0 - Beta
+  </div>
+
+  <div class="modal" id="userEditModal">
+    <div class="modal-header" id="modalUsername"></div>
+    <div class="modal-line"></div>
+    <div class="modal-details">
+      <span>Banned:</span> <span id="modalBannedStatus">Not banned</span><br />
+      <span>Ban Reason:</span> <span id="modalBanReason">Not banned</span>
+    </div>
+    <div class="modal-btn-container">
+      <p id="errorMessage" style="color: red; display: none;"></p>
+      <button class="modal-btn" id="banButton">Ban</button>
+      <button class="modal-btn modal-close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <div class="center-login-box" id="loginBox">
+    <h3>Enter Login Key</h3>
+    <input type="password" id="loginKeyInput" placeholder="Enter key..." />
+    <span class="error-msg" id="errorMsg">Invalid login key</span>
+    <button onclick="validateKey()">Login</button>
+  </div>
+
+  <div class="main-dashboard" id="mainDashboard">
+    <div id="usersSection" style="display: none;">
+      <h3>Users</h3>
+      <div style="margin: 10px 0;">
+        <input type="text" id="userSearchInput" placeholder="Search users..." style="padding: 8px; width: 200px; border-radius: 6px; border: none; background: #1e1e24; color: white;">
+        <button style="padding: 8px 12px; background: var(--primary); border: none; border-radius: 6px; color: white; font-weight: 600; cursor: pointer;" onclick="searchUsers()">Search</button>
+      </div>
+      <div class="user-list" id="userListContainer"></div>
+    </div>
+
+    <div id="serverStatsSection" style="display: none;">
+      <h3>Server Statistics</h3>
+      <div id="serverStatsDisplay" style="margin-top: 15px; font-family: monospace; font-size: 0.95rem; background: rgba(24,24,28,0.85); padding: 20px; border-radius: 10px;"></div>
+    </div>
+
+    <div id="auditLogSection" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>Audit Log</h3>
+        <button id="refreshLogsBtn" style="padding: 6px 10px; background: var(--primary); border: none; border-radius: 6px; color: white; cursor: pointer; font-weight: 600;">Refresh</button>
+      </div>
+      <div class="tags">
+        <button class="tag-btn active" data-type="all">All</button>
+        <button class="tag-btn" data-type="info">Info</button>
+        <button class="tag-btn" data-type="warning">Warning</button>
+        <button class="tag-btn" data-type="error">Error</button>
+      </div>
+      <div class="log-entries" style="margin-top: 15px;">
+        <div id="logContainer" style="font-family: monospace; font-size: 0.9rem; line-height: 1.4;"></div>
+      </div>
+    </div>
+
+    <div class="settings-section" id="settingsSection">
+      <h3>Settings</h3>
+      <div class="option">
+        <label for="publicTesting">Enable Public Testing:</label>
+        <input type="checkbox" id="publicTesting" />
+      </div>
+      <div class="option">
+        <label for="launcherOnline">Launcher Online (If false, it will stop people from starting the launcher):</label>
+        <input type="checkbox" id="launcherOnline" />
+      </div>
+      <button onclick="saveSettings()">Save Settings</button>
+    </div>
+  </div>
+
+  <script>
+    let loginKey = "";
+    let allUsers = [];
+    let allLogs = [];
+    let currentFilter = "all";
+    let serverStatsInterval;
+
+    async function validateKey() {
+      const input = "%adminkey%";
+      const error = document.getElementById('errorMsg');
+      const loginBox = document.getElementById('loginBox');
+      const mainDashboard = document.getElementById('mainDashboard');
+      const sidebar = document.getElementById('sidebar');
+
+      error.style.display = 'none';
+      if (!input) {
+        error.textContent = 'Please enter a key.';
+        error.style.display = 'block';
+        return;
+      }
+
+      try {
+        const res = await fetch("/api/v2/admin/verify", {
+          method: "GET",
+          headers: { "X-Admin-Key": input }
+        });
+
+        if (res.status === 200) {
+          loginKey = input;
+          loginBox.style.display = 'none';
+          sidebar.style.display = 'flex';
+          mainDashboard.style.display = 'block';
+          document.getElementById('usersSection').style.display = 'block';
+          usersBtn.classList.add("active");
+          fetchSettings();
+          fetchUsers();
+        } else {
+          error.textContent = res.status === 401 ? 'Invalid login key' : 'Server error. Try again.';
+          error.style.display = 'block';
+        }
+      } catch {
+        error.textContent = 'Network error. Check your connection.';
+        error.style.display = 'block';
+      }
+    }
+
+    validateKey();
+
+    async function fetchSettings() {
+      try {
+        const res = await fetch('/api/v2/admin/settings', {
+          headers: { 'X-Admin-Key': loginKey }
+        });
+
+        if (res.ok) {
+          const settings = await res.json();
+          document.getElementById('publicTesting').checked = settings.publicTesting;
+          document.getElementById('launcherOnline').checked = settings.launcherOnline;
+        }
+      } catch (err) {
+        console.error("Settings fetch error:", err);
+      }
+    }
+
+    function renderUsers() {
+      const userListContainer = document.getElementById('userListContainer');
+      userListContainer.innerHTML = '';
+
+      allUsers.forEach(user => {
+        const userItem = document.createElement('div');
+        userItem.classList.add('user-item');
+        userItem.innerHTML = `
+          <div>
+            <strong>${user.username}</strong> 
+            <span style="font-size: 0.9rem; color: var(--gray-text);">(${user.accountId})</span> 
+            <span style="font-size: 0.9rem;">Banned: ${user.banned}</span>
+          </div>
+          <button onclick="editUser('${user.id}')">Edit</button>
+        `;
+        userListContainer.appendChild(userItem);
+      });
+    }
+
+    function editUser(userId) {
+      const user = allUsers.find(u => u.id === userId);
+      const modal = document.getElementById("userEditModal");
+      const banButton = document.getElementById('banButton');
+      const errorMessage = document.getElementById('errorMessage');
+      errorMessage.style.display = "none";
+
+      document.getElementById("modalUsername").textContent = `${user.username} (${user.accountId})`;
+      document.getElementById("modalBannedStatus").textContent = user.banned ? "Yes" : "No";
+      document.getElementById("modalBanReason").textContent = user.banReason;
+
+      if (user.banned) {
+        banButton.textContent = 'Unban';
+        banButton.onclick = () => unbanUser(userId, modal, errorMessage);
+      } else {
+        banButton.textContent = 'Ban';
+        banButton.onclick = () => banUser(userId, modal, errorMessage);
+      }
+
+      modal.style.display = "block";
+    }
+
+    async function banUser(userId, modal, errorMessage) {
+      try {
+        const user = allUsers.find(u => u.id === userId);
+
+        const response = await fetch(`/api/v2/admin/ban`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Admin-Key': loginKey,
+            'accountId': user.accountId
+          }
+        });
+
+        if (response.ok) {
+          modal.style.display = "none";
+          alert("User banned successfully!");
+          fetchUsers();
+        } else {
+          const errorData = await response.json();
+          errorMessage.textContent = errorData.message || "Failed to ban user.";
+          errorMessage.style.display = "block";
+        }
+      } catch (error) {
+        errorMessage.textContent = "Error banning user.";
+        errorMessage.style.display = "block";
+      }
+    }
+
+    async function unbanUser(userId, modal, errorMessage) {
+      try {
+        const user = allUsers.find(u => u.id === userId);
+
+        const response = await fetch(`/api/v2/admin/unban`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Admin-Key': loginKey,
+            'accountId': user.accountId
+          }
+        });
+
+        if (response.ok) {
+          modal.style.display = "none";
+          alert("User unbanned successfully!");
+          fetchUsers();
+        } else {
+          const errorData = await response.json();
+          errorMessage.textContent = errorData.message || "Failed to unban user.";
+          errorMessage.style.display = "block";
+        }
+      } catch (error) {
+        errorMessage.textContent = "Error unbanning user.";
+        errorMessage.style.display = "block";
+      }
+    }
+
+    function closeModal() {
+      document.getElementById("userEditModal").style.display = "none";
+    }
+
+    async function fetchUsers() {
+      const searchQuery = document.getElementById('userSearchInput').value.trim();
+      if (!searchQuery) return;
+
+      try {
+        const res = await fetch('/api/v2/admin/user', {
+          headers: {
+            'X-Admin-Key': loginKey,
+            'User-Search': searchQuery
+          }
+        });
+
+        if (res.ok) {
+          const users = await res.json();
+          allUsers = users;
+          renderUsers();
+        } else {
+          console.error('Failed to fetch users:', res.status);
+        }
+      } catch (err) {
+        console.error('Error fetching users:', err);
+      }
+    }
+
+    async function searchUsers() {
+      await fetchUsers();
+      const searchQuery = document.getElementById('userSearchInput').value.toLowerCase();
+      const filteredUsers = allUsers.filter(user =>
+        user.username.toLowerCase().includes(searchQuery) ||
+        user.accountId.toLowerCase().includes(searchQuery)
+      );
+      allUsers = filteredUsers;
+      renderUsers();
+    }
+
+    async function saveSettings() {
+      const data = {
+        bPublic: document.getElementById('publicTesting').checked,
+        launcherOnline: document.getElementById('launcherOnline').checked
+      };
+      try {
+        await fetch("/api/v2/admin/settings", {
+          method: "PATCH",
+          headers: {
+            "X-Admin-Key": loginKey,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+      } catch (err) {
+        console.error("Save error:", err);
+      }
+    }
+
+    async function fetchLogs() {
+      const logContainer = document.getElementById("logContainer");
+      logContainer.innerHTML = "<p style='color: var(--gray-text);'>Loading logs...</p>";
+      try {
+        const res = await fetch("/api/v2/admin/log", {
+          headers: { "X-Admin-Key": loginKey }
+        });
+        if (res.ok) {
+          const text = await res.text();
+          allLogs = text.trim().split("\n");
+          renderLogs(currentFilter);
+        } else {
+          logContainer.innerHTML = `<p style='color: #ff5f5f;'>Failed to load logs (Status ${res.status})</p>`;
+        }
+      } catch {
+        logContainer.innerHTML = "<p style='color: #ff5f5f;'>Failed to load logs. Try again.</p>";
+      }
+    }
+
+    function renderLogs(filter) {
+      const logContainer = document.getElementById("logContainer");
+      const filtered = allLogs.filter(line => {
+        if (filter === "all") return true;
+        if (filter === "info") return line.includes("[INFO]");
+        if (filter === "warning") return line.includes("[WARNING]");
+        if (filter === "error") return line.includes("[ERROR]");
+        return false;
+      });
+
+      const colored = filtered.map(line => {
+        if (line.includes("[ERROR]")) return `<div style="color: #ff5f5f;">${line}</div>`;
+        if (line.includes("[WARNING]")) return `<div style="color: #f4bd0e;">${line}</div>`;
+        return `<div style="color: var(--gray-text);">${line}</div>`;
+      });
+
+      logContainer.innerHTML = colored.length > 0
+        ? colored.join("")
+        : "<p style='color: var(--gray-text);'>No logs match this filter.</p>";
+    }
+
+    function fetchServerStats() {
+      clearInterval(serverStatsInterval);
+      const container = document.getElementById("serverStatsDisplay");
+      container.innerHTML = "Loading...";
+
+      async function updateStats() {
+        try {
+          const res = await fetch("/api/v2/dedicated/stats", {
+            headers: { "X-Admin-Key": loginKey }
+          });
+
+          if (!res.ok) {
+            container.innerHTML = `<span style="color: #ff5f5f;">Error ${res.status}: Unable to fetch stats.</span>`;
+            return;
+          }
+
+          const data = await res.json();
+          container.innerHTML = `
+            <div><strong>CPU Usage:</strong> ${data.cpu_usage_percent.toFixed(1)}%</div>
+            <div><strong>RAM Usage:</strong> ${data.ram_usage_percent.toFixed(1)}%</div>
+            <div><strong>Uptime:</strong> ${data.uptime}</div>
+          `;
+        } catch {
+          container.innerHTML = `<span style="color: #ff5f5f;">Failed to load server stats.</span>`;
+        }
+      }
+
+      updateStats();
+      serverStatsInterval = setInterval(updateStats, 15000);
+    }
+    
+    const usersBtn = document.getElementById("usersBtn");
+    const auditBtn = document.getElementById("auditBtn");
+    const settingsBtn = document.getElementById("settingsBtn");
+    const serverStatsBtn = document.getElementById("serverStatsBtn");
+
+    const usersSection = document.getElementById("usersSection");
+    const auditLogSection = document.getElementById("auditLogSection");
+    const settingsSection = document.getElementById("settingsSection");
+    const serverStatsSection = document.getElementById("serverStatsSection");
+
+    usersBtn.addEventListener("click", () => {
+      [usersBtn, auditBtn, settingsBtn, serverStatsBtn].forEach(b => b.classList.remove("active"));
+      usersBtn.classList.add("active");
+      usersSection.style.display = "block";
+      auditLogSection.style.display = "none";
+      settingsSection.style.display = "none";
+      serverStatsSection.style.display = "none";
+      clearInterval(serverStatsInterval);
+    });
+
+    auditBtn.addEventListener("click", () => {
+      [usersBtn, auditBtn, settingsBtn, serverStatsBtn].forEach(b => b.classList.remove("active"));
+      auditBtn.classList.add("active");
+      usersSection.style.display = "none";
+      auditLogSection.style.display = "block";
+      settingsSection.style.display = "none";
+      serverStatsSection.style.display = "none";
+      fetchLogs();
+      clearInterval(serverStatsInterval);
+    });
+
+    settingsBtn.addEventListener("click", () => {
+      [usersBtn, auditBtn, settingsBtn, serverStatsBtn].forEach(b => b.classList.remove("active"));
+      settingsBtn.classList.add("active");
+      usersSection.style.display = "none";
+      auditLogSection.style.display = "none";
+      settingsSection.style.display = "block";
+      serverStatsSection.style.display = "none";
+      clearInterval(serverStatsInterval);
+    });
+
+    serverStatsBtn.addEventListener("click", () => {
+      [usersBtn, auditBtn, settingsBtn, serverStatsBtn].forEach(b => b.classList.remove("active"));
+      serverStatsBtn.classList.add("active");
+      usersSection.style.display = "none";
+      auditLogSection.style.display = "none";
+      settingsSection.style.display = "none";
+      serverStatsSection.style.display = "block";
+      fetchServerStats();
+    });
+  </script>
+</body>
+</html>

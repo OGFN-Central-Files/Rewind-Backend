@@ -1,0 +1,39 @@
+{
+  "_id": "",
+  "createdAt": "",
+  "updatedAt": "",
+  "rvn": 1,
+  "wipeNumber": 1,
+  "accountId": "",
+  "profileId": "creative",
+  "version": "no_version",
+  "items": {
+    "446b8db5-4117-4e84-9373-8e69c284d8c5": {
+      "templateId": "CreativePlot:temperate_medium",
+      "attributes": {
+        "last_used_date": "2019-10-08T21:04:05.331Z",
+        "vk_project_id": "7bd8a4cf-3e38-4eeb-aa33-f4d4354a4bdb",
+        "level": 1,
+        "permissions": {
+          "permission": "Private",
+          "whitelist": []
+        },
+        "islandIndex": 5,
+        "locale": "en"
+      },
+      "quantity": 1
+    }
+  },
+  "stats": {
+    "attributes": {
+      "last_used_project": "",
+      "max_island_plots": 50,
+      "publish_allowed": false,
+      "support_code": "",
+      "last_used_plot": "",
+      "permissions": ["fortnite:creative:beta:creatorportal"],
+      "creator_name": ""
+    }
+  },
+  "commandRevision": 0
+}

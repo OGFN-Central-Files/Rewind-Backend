@@ -1,0 +1,730 @@
+{
+   "builds": [
+     {
+       "build": "OT6.5-CL-2870186",
+       "name": "OT6.5",
+       "accessType": "developer",
+       "season_number": "OT6.5"
+     },
+     {
+       "build": "1.7.2-CL-3700114",
+       "name": "Fortnite 1.7.2",
+       "accessType": "developer",
+       "season_number": "1.7.2"
+     },
+     {
+       "build": "1.8-CL-3724489",
+       "name": "Fortnite 1.8",
+       "accessType": "developer",
+       "season_number": "1.8"
+     },
+     {
+       "build": "1.8.1-CL-3729133",
+       "name": "Fortnite 1.8.1",
+       "accessType": "developer",
+       "season_number": "1.8.1"
+     },
+     {
+       "build": "1.8.2-CL-3741772",
+       "name": "Fortnite 1.8.2",
+       "accessType": "developer",
+       "season_number": "1.8.2"
+     },
+     {
+       "build": "1.9-CL-3757339",
+       "name": "Fortnite 1.9",
+       "accessType": "developer",
+       "season_number": "1.9"
+     },
+     {
+       "build": "1.9.1-CL-3775276",
+       "name": "Fortnite 1.9.1",
+       "accessType": "developer",
+       "season_number": "1.9.1"
+     },
+     {
+       "build": "1.10-CL-3790078",
+       "name": "Fortnite 1.10",
+       "accessType": "developer",
+       "season_number": "1.10"
+     },
+     {
+       "build": "1.10.1-CL-3801606",
+       "name": "Fortnite 1.10.1",
+       "accessType": "developer",
+       "season_number": "1.10.1"
+     },
+     {
+       "build": "1.11-CL-3807424",
+       "name": "Fortnite 1.11",
+       "accessType": "developer",
+       "season_number": "1.11"
+     },
+     {
+       "build": "2.1.0-CL-3825894",
+       "name": "Fortnite 2.1.0",
+       "accessType": "developer",
+       "season_number": "2.1.0"
+     },
+     {
+       "build": "2.2.0-CL-3841827",
+       "name": "Fortnite 2.2.0",
+       "accessType": "developer",
+       "season_number": "2.2.0"
+     },
+     {
+       "build": "2.3.0-CL-3847564",
+       "name": "Fortnite 2.3.0",
+       "accessType": "developer",
+       "season_number": "2.3.0"
+     },
+     {
+       "build": "2.4.0-CL-3858292",
+       "name": "Fortnite 2.4.0",
+       "accessType": "developer",
+       "season_number": "2.4.0"
+     },
+     {
+       "build": "2.4.2-CL-3870737",
+       "name": "Fortnite 2.4.2",
+       "accessType": "developer",
+       "season_number": "2.4.2"
+     },
+     {
+       "build": "2.5.0-CL-3889387",
+       "name": "Fortnite 2.5.0",
+       "accessType": "developer",
+       "season_number": "2.5.0"
+     },
+     {
+       "build": "3.0-CL-3901517",
+       "name": "Fortnite 3.0",
+       "accessType": "developer",
+       "season_number": "3.0"
+     },
+     {
+       "build": "3.1-CL-3915963",
+       "name": "Fortnite 3.1",
+       "accessType": "developer",
+       "season_number": "3.1"
+     },
+     {
+       "build": "3.1-CL-3917250",
+       "name": "Fortnite 3.1",
+       "accessType": "developer",
+       "season_number": "3.1"
+     },
+     {
+       "build": "3.2-CL-3935073",
+       "name": "Fortnite 3.2",
+       "accessType": "developer",
+       "season_number": "3.2"
+     },
+     {
+       "build": "3.3-CL-3942182",
+       "name": "Fortnite 3.3",
+       "accessType": "developer",
+       "season_number": "3.3"
+     },
+     {
+       "build": "3.5-CL-4008490",
+       "name": "Fortnite 3.5",
+       "accessType": "developer",
+       "season_number": "3.5"
+     },
+     {
+       "build": "3.6-CL-4019403",
+       "name": "Fortnite 3.6",
+       "accessType": "developer",
+       "season_number": "3.6"
+     },
+     {
+       "build": "4.0-CL-4039451",
+       "name": "Fortnite 4.0",
+       "accessType": "developer",
+       "season_number": "4.0"
+     },
+     {
+       "build": "4.1-CL-4053532",
+       "name": "Fortnite 4.1",
+       "accessType": "developer",
+       "season_number": "4.1"
+     },
+     {
+       "build": "4.2-CL-4072250",
+       "name": "Fortnite 4.2",
+       "accessType": "developer",
+       "season_number": "4.2"
+     },
+     {
+       "build": "4.4-CL-4117433",
+       "name": "Fortnite 4.4",
+       "accessType": "developer",
+       "season_number": "4.4"
+     },
+     {
+       "build": "4.4.1-CL-4127312",
+       "name": "Fortnite 4.4.1",
+       "accessType": "developer",
+       "season_number": "4.4.1"
+     },
+     {
+       "build": "4.5-CL-4159770",
+       "name": "Fortnite 4.5",
+       "accessType": "developer",
+       "season_number": "4.5"
+     },
+     {
+       "build": "5.00-CL-4204761",
+       "name": "Fortnite 5.00",
+       "accessType": "developer",
+       "season_number": "5.00"
+     },
+     {
+       "build": "5.00-CL-4214610",
+       "name": "Fortnite 5.00",
+       "accessType": "developer",
+       "season_number": "5.00"
+     },
+     {
+       "build": "5.10-CL-4240749",
+       "name": "Fortnite 5.10",
+       "accessType": "developer",
+       "season_number": "5.10"
+     },
+     {
+       "build": "5.21-CL-4288479",
+       "name": "Fortnite 5.21",
+       "accessType": "developer",
+       "season_number": "5.21"
+     },
+     {
+       "build": "5.30-CL-4305896",
+       "name": "Fortnite 5.30",
+       "accessType": "developer",
+       "season_number": "5.30"
+     },
+     {
+       "build": "5.40-CL-4352937",
+       "name": "Fortnite 5.40",
+       "accessType": "developer",
+       "season_number": "5.40"
+     },
+     {
+       "build": "5.41-CL-4363240",
+       "name": "Fortnite 5.41",
+       "accessType": "developer",
+       "season_number": "5.41"
+     },
+     {
+       "build": "6.00-CL-4395664",
+       "name": "Fortnite 6.00",
+       "accessType": "developer",
+       "season_number": "6.00"
+     },
+     {
+       "build": "6.00-CL-4402180",
+       "name": "Fortnite 6.00",
+       "accessType": "developer",
+       "season_number": "6.00"
+     },
+     {
+       "build": "6.01-CL-4417689",
+       "name": "Fortnite 6.01",
+       "accessType": "developer",
+       "season_number": "6.01"
+     },
+     {
+       "build": "6.01-CL-4424678",
+       "name": "Fortnite 6.01",
+       "accessType": "developer",
+       "season_number": "6.01"
+     },
+     {
+       "build": "6.02-CL-4442095",
+       "name": "Fortnite 6.02",
+       "accessType": "developer",
+       "season_number": "6.02"
+     },
+     {
+       "build": "6.02-CL-4461277",
+       "name": "Fortnite 6.02",
+       "accessType": "developer",
+       "season_number": "6.02"
+     },
+     {
+       "build": "6.10-CL-4464155",
+       "name": "Fortnite 6.10",
+       "accessType": "developer",
+       "season_number": "6.10"
+     },
+     {
+       "build": "6.10-CL-4476098",
+       "name": "Fortnite 6.10",
+       "accessType": "developer",
+       "season_number": "6.10"
+     },
+     {
+       "build": "6.10-CL-4480234",
+       "name": "Fortnite 6.10",
+       "accessType": "developer",
+       "season_number": "6.10"
+     },
+     {
+       "build": "6.20-CL-4497486",
+       "name": "Fortnite 6.20",
+       "accessType": "developer",
+       "season_number": "6.20"
+     },
+     {
+       "build": "6.21-CL-4526925",
+       "name": "Fortnite 6.21",
+       "accessType": "developer",
+       "season_number": "6.21"
+     },
+     {
+       "build": "6.22-CL-4543176",
+       "name": "Fortnite 6.22",
+       "accessType": "developer",
+       "season_number": "6.22"
+     },
+     {
+       "build": "6.30-CL-4573096",
+       "name": "Fortnite 6.30",
+       "accessType": "developer",
+       "season_number": "6.30"
+     },
+     {
+       "build": "6.31-CL-4573279",
+       "name": "Fortnite 6.31",
+       "accessType": "developer",
+       "season_number": "6.31"
+     },
+     {
+       "build": "7.00-CL-4629139",
+       "name": "Fortnite 7.00",
+       "accessType": "developer",
+       "season_number": "7.00"
+     },
+     {
+       "build": "7.10-CL-4667333",
+       "name": "Fortnite 7.10",
+       "accessType": "developer",
+       "season_number": "7.10"
+     },
+     {
+       "build": "7.20-CL-4727874",
+       "name": "Fortnite 7.20",
+       "accessType": "developer",
+       "season_number": "7.20"
+     },
+     {
+       "build": "7.30-CL-4834550",
+       "name": "Fortnite 7.30",
+       "accessType": "developer",
+       "season_number": "7.30"
+     },
+     {
+       "build": "7.40-CL-5046157",
+       "name": "Fortnite 7.40",
+       "accessType": "developer",
+       "season_number": "7.40"
+     },
+     {
+       "build": "8.00-CL-5203069",
+       "name": "Fortnite 8.00",
+       "accessType": "developer",
+       "season_number": "8.00"
+     },
+     {
+       "build": "8.20-CL-N/A",
+       "name": "Fortnite 8.20",
+       "accessType": "developer",
+       "season_number": "8.20"
+     },
+     {
+       "build": "8.30-CL-N/A",
+       "name": "Fortnite 8.30",
+       "accessType": "developer",
+       "season_number": "8.30"
+     },
+     {
+       "build": "8.40-CL-N/A",
+       "name": "Fortnite 8.40",
+       "accessType": "developer",
+       "season_number": "8.40"
+     },
+     {
+       "build": "8.50-CL-6058028",
+       "name": "Fortnite 8.50",
+       "accessType": "developer",
+       "season_number": "8.50"
+     },
+     {
+       "build": "8.51-CL-N/A",
+       "name": "Fortnite 8.51",
+       "accessType": "developer",
+       "season_number": "8.51"
+     },
+     {
+       "build": "9.00-CL-6337466",
+       "name": "Fortnite 9.00",
+       "accessType": "developer",
+       "season_number": "9.00"
+     },
+     {
+       "build": "9.01-CL-6428087",
+       "name": "Fortnite 9.01",
+       "accessType": "developer",
+       "season_number": "9.01"
+     },
+     {
+       "build": "9.10-CL-6639283",
+       "name": "Fortnite 9.10",
+       "accessType": "developer",
+       "season_number": "9.10"
+     },
+     {
+       "build": "9.20-CL-N/A",
+       "name": "Fortnite 9.20",
+       "accessType": "developer",
+       "season_number": "9.20"
+     },
+     {
+       "build": "9.21-CL-6922310",
+       "name": "Fortnite 9.21",
+       "accessType": "developer",
+       "season_number": "9.21"
+     },
+     {
+       "build": "9.30-CL-7095426",
+       "name": "Fortnite 9.30",
+       "accessType": "developer",
+       "season_number": "9.30"
+     },
+     {
+       "build": "9.40-CL-7315705",
+       "name": "Fortnite 9.40",
+       "accessType": "developer",
+       "season_number": "9.40"
+     },
+     {
+       "build": "9.41-CL-7609292",
+       "name": "Fortnite 9.41",
+       "accessType": "developer",
+       "season_number": "9.41"
+     },
+     {
+       "build": "10.00-CL-7704164",
+       "name": "Fortnite 10.00",
+       "accessType": "developer",
+       "season_number": "10.00"
+     },
+     {
+       "build": "10.10-CL-7955722",
+       "name": "Fortnite 10.10",
+       "accessType": "developer",
+       "season_number": "10.10"
+     },
+     {
+       "build": "10.20-CL-8456527",
+       "name": "Fortnite 10.20",
+       "accessType": "developer",
+       "season_number": "10.20"
+     },
+     {
+       "build": "10.30-CL-N/A",
+       "name": "Fortnite 10.30",
+       "accessType": "developer",
+       "season_number": "10.30"
+     },
+     {
+       "build": "10.31-CL-8723043",
+       "name": "Fortnite 10.31",
+       "accessType": "developer",
+       "season_number": "10.31"
+     },
+     {
+       "build": "10.40-CL-9380822",
+       "name": "Fortnite 10.40",
+       "accessType": "developer",
+       "season_number": "10.40"
+     },
+     {
+       "build": "11.00-CL-9603448",
+       "name": "Fortnite 11.00",
+       "accessType": "developer",
+       "season_number": "11.00"
+     },
+     {
+       "build": "11.01-CL-N/A",
+       "name": "Fortnite 11.01",
+       "accessType": "developer",
+       "season_number": "11.01"
+     },
+     {
+       "build": "11.10-CL-N/A",
+       "name": "Fortnite 11.10",
+       "accessType": "developer",
+       "season_number": "11.10"
+     },
+     {
+       "build": "11.30-CL-10708866",
+       "name": "Fortnite 11.30",
+       "accessType": "developer",
+       "season_number": "11.30"
+     },
+     {
+       "build": "11.31-CL-10800459",
+       "name": "Fortnite 11.31",
+       "accessType": "developer",
+       "season_number": "11.31"
+     },
+     {
+       "build": "12.00-CL-11556442",
+       "name": "Fortnite 12.00",
+       "accessType": "developer",
+       "season_number": "12.00"
+     },
+     {
+       "build": "12.10-CL-12016987",
+       "name": "Fortnite 12.10",
+       "accessType": "developer",
+       "season_number": "12.10"
+     },
+     {
+       "build": "12.21-CL-12353830",
+       "name": "Fortnite 12.21",
+       "accessType": "developer",
+       "season_number": "12.21"
+     },
+     {
+       "build": "12.41-CL-12905909",
+       "name": "Fortnite 12.41",
+       "accessType": "developer",
+       "season_number": "12.41"
+     },
+     {
+       "build": "12.50-CL-13193885",
+       "name": "Fortnite 12.50",
+       "accessType": "developer",
+       "season_number": "12.50"
+     },
+     {
+       "build": "12.61-CL-13498980",
+       "name": "Fortnite 12.61",
+       "accessType": "developer",
+       "season_number": "12.61"
+     },
+     {
+       "build": "13.00-CL-13715544",
+       "name": "Fortnite 13.00",
+       "accessType": "developer",
+       "season_number": "13.00"
+     },
+     {
+       "build": "13.40-CL-14113327",
+       "name": "Fortnite 13.40",
+       "accessType": "developer",
+       "season_number": "13.40"
+     },
+     {
+       "build": "14.00-CL-14173417",
+       "name": "Fortnite 14.00",
+       "accessType": "developer",
+       "season_number": "14.00"
+     },
+     {
+       "build": "14.30-CL-14456520",
+       "name": "Fortnite 14.30",
+       "accessType": "developer",
+       "season_number": "14.30"
+     },
+     {
+       "build": "14.40-CL-14550713",
+       "name": "Fortnite 14.40",
+       "accessType": "developer",
+       "season_number": "14.40"
+     },
+     {
+       "build": "14.60-CL-14786821",
+       "name": "Fortnite 14.60",
+       "accessType": "developer",
+       "season_number": "14.60"
+     },
+     {
+       "build": "15.00-CL-14984751",
+       "name": "Fortnite 15.00",
+       "accessType": "developer",
+       "season_number": "15.00"
+     },
+     {
+       "build": "15.10-CL-15014719",
+       "name": "Fortnite 15.10",
+       "accessType": "developer",
+       "season_number": "15.10"
+     },
+     {
+       "build": "15.30-CL-15341163",
+       "name": "Fortnite 15.30",
+       "accessType": "developer",
+       "season_number": "15.30"
+     },
+     {
+       "build": "15.50-CL-15526472",
+       "name": "Fortnite 15.50",
+       "accessType": "developer",
+       "season_number": "15.50"
+     },
+     {
+       "build": "16.00-CL-16054793",
+       "name": "Fortnite 16.00",
+       "accessType": "developer",
+       "season_number": "16.00"
+     },
+     {
+       "build": "16.30-CL-16163563",
+       "name": "Fortnite 16.30",
+       "accessType": "developer",
+       "season_number": "16.30"
+     },
+     {
+       "build": "16.40-CL-16218553",
+       "name": "Fortnite 16.40",
+       "accessType": "developer",
+       "season_number": "16.40"
+     },
+     {
+       "build": "16.50-CL-16451367",
+       "name": "Fortnite 16.50",
+       "accessType": "developer",
+       "season_number": "16.50"
+     },
+     {
+       "build": "17.30-CL-17004569",
+       "name": "Fortnite 17.30",
+       "accessType": "developer",
+       "season_number": "17.30"
+     },
+     {
+       "build": "17.50-CL-17388565",
+       "name": "Fortnite 17.50",
+       "accessType": "developer",
+       "season_number": "17.50"
+     },
+     {
+       "build": "18.00-CL-17847626",
+       "name": "Fortnite 18.00",
+       "accessType": "developer",
+       "season_number": "18.00"
+     },
+     {
+       "build": "18.10-CL-17923647",
+       "name": "Fortnite 18.10",
+       "accessType": "developer",
+       "season_number": "18.10"
+     },
+     {
+       "build": "18.21-CL-18017591",
+       "name": "Fortnite 18.21",
+       "accessType": "developer",
+       "season_number": "18.21"
+     },
+     {
+       "build": "18.40-CL-18163738",
+       "name": "Fortnite 18.40",
+       "accessType": "developer",
+       "season_number": "18.40"
+     },
+     {
+       "build": "19.01-CL-18489740",
+       "name": "Fortnite 19.01",
+       "accessType": "developer",
+       "season_number": "19.01"
+     },
+     {
+       "build": "19.10-CL-18675304",
+       "name": "Fortnite 19.10",
+       "accessType": "public",
+       "season_number": "19.10"
+     },
+     {
+       "build": "19.20-CL-18778007",
+       "name": "Fortnite 19.20",
+       "accessType": "developer",
+       "season_number": "19.20"
+     },
+     {
+       "build": "20.40-CL-20244966",
+       "name": "Fortnite 20.40",
+       "accessType": "developer",
+       "season_number": "20.40"
+     },
+     {
+       "build": "21.00-CL-20463113",
+       "name": "Fortnite 21.00",
+       "accessType": "developer",
+       "season_number": "21.00"
+     },
+     {
+       "build": "21.10-CL-21159871",
+       "name": "Fortnite 21.10",
+       "accessType": "developer",
+       "season_number": "21.10"
+     },
+     {
+       "build": "21.20-CL-21179810",
+       "name": "Fortnite 21.20",
+       "accessType": "developer",
+       "season_number": "21.20"
+     },
+     {
+       "build": "21.50-CL-21245791",
+       "name": "Fortnite 21.50",
+       "accessType": "developer",
+       "season_number": "21.50"
+     },
+     {
+       "build": "22.20-CL-23456978",
+       "name": "Fortnite 22.20",
+       "accessType": "developer",
+       "season_number": "22.20"
+     },
+     {
+       "build": "22.40-CL-23849827",
+       "name": "Fortnite 22.40",
+       "accessType": "developer",
+       "season_number": "22.40"
+     },
+     {
+       "build": "23.00-CL-23344627",
+       "name": "Fortnite 23.00",
+       "accessType": "developer",
+       "season_number": "23.00"
+     },
+     {
+       "build": "24.20-CL-23070899",
+       "name": "Fortnite 24.20",
+       "accessType": "developer",
+       "season_number": "24.20"
+     },
+     {
+       "build": "24.30-CL-23789416",
+       "name": "Fortnite 24.30",
+       "accessType": "developer",
+       "season_number": "24.30"
+     },
+     {
+       "build": "26.30-CL-28798412",
+       "name": "Fortnite 26.30",
+       "accessType": "developer",
+       "season_number": "26.30"
+     },
+     {
+       "build": "27.11-CL-29739262",
+       "name": "Fortnite 27.11",
+       "accessType": "developer",
+       "season_number": "27.11"
+     }
+   ]
+ }

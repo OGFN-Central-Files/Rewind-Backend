@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rewind | Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #00c6ff;
+      --secondary: #92fe9d;
+      --dark: #0a0a0a;
+      --light-text: #ffffff;
+      --gray-text: #a0a0a0;
+    }
+    body {
+      background: #121117;
+      font-family: 'Inter', sans-serif;
+      color: var(--light-text);
+      line-height: 1.6;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .floating-squares {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      overflow: hidden; z-index: 0;
+      pointer-events: none;
+    }
+    .floating-squares div {
+      position: absolute;
+      width: 200px; height: 200px;
+      background: rgba(27, 27, 27, 0.9);
+      animation: floatSquares 30s linear infinite;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      bottom: -250px;
+    }
+    .floating-squares div:nth-child(1) { left: 5%; animation-duration: 25s; }
+    .floating-squares div:nth-child(2) { left: 25%; animation-duration: 28s; animation-delay: -10s; }
+    .floating-squares div:nth-child(3) { left: 45%; animation-duration: 27s; animation-delay: -5s; }
+    .floating-squares div:nth-child(4) { left: 65%; animation-duration: 29s; animation-delay: -15s; }
+    .floating-squares div:nth-child(5) { left: 85%; animation-duration: 24s; animation-delay: -8s; }
+    .floating-squares div:nth-child(6) { left: 15%; animation-duration: 26s; animation-delay: -12s; }
+    .floating-squares div:nth-child(7) { left: 35%; animation-duration: 23s; animation-delay: -18s; }
+
+    @keyframes floatSquares {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(-2000px) rotate(360deg); opacity: 0.8; }
+    }
+
+    .sidebar {
+      width: 250px;
+      background: rgba(30, 30, 34, 0.9);
+      border-right: 1px solid #31313142;
+      height: 100vh;
+      padding-top: 20px;
+      position: relative;
+      z-index: 2;
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .sidebar h2 {
+      text-align: center;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      margin-bottom: 30px;
+      font-size: 24px;
+      color: var(--light-text);
+    }
+    .sidebar button {
+      background: none;
+      border: none;
+      color: var(--light-text);
+      text-align: left;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      width: 100%;
+    }
+    .sidebar button:hover,
+    .sidebar button.active {
+      background: var(--primary);
+      color: black;
+    }
+
+    .top-bar {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+      font-size: 0.95rem;
+      z-index: 2;
+    }
+
+    .center-login-box {
+      background: rgba(24, 24, 28, 0.85);
+      width: 360px;
+      padding: 30px;
+      border-radius: 15px;
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+    .center-login-box h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+    .center-login-box input {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      background: #1e1e24;
+      color: white;
+    }
+    .center-login-box button {
+      background: var(--primary);
+      border: none;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .center-login-box button:hover { background: #009edb; }
+    .error-msg {
+      color: #ff5f5f;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .main-dashboard {
+      display: none;
+      z-index: 1;
+      position: absolute;
+      left: 250px;
+      top: 60px;
+      padding: 20px;
+      color: white;
+      width: calc(100% - 250px);
+    }
+
+    .tags {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .tag-btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: #1e1e24;
+      color: var(--light-text);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .tag-btn:hover,
+    .tag-btn.active { background: var(--primary); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -40%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    .settings-section {
+      display: none;
+      padding: 20px;
+      color: white;
+      background: rgba(24, 24, 28, 0.85);
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .settings-section h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .settings-section .option {
+      margin-bottom: 15px;
+    }
+
+    .settings-section label {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .settings-section button {
+      padding: 8px 16px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .user-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .user-item {
+      background: rgba(24, 24, 28, 0.85);
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .user-item button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .modal {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(24, 24, 28, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      display: none;
+    }
+
+    .modal-header {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--light-text);
+    }
+
+    .modal-line {
+      border-top: 1px solid var(--gray-text);
+      margin: 10px 0;
+    }
+
+    .modal-details {
+      font-size: 14px;
+      color: var(--gray-text);
+      margin-bottom: 15px;
+    }
+
+    .modal-details span {
+      font-weight: 600;
+    }
+
+    .modal-btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .modal-btn {
+      padding: 8px 16px;
+      background: var(--primary);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .modal-btn:hover {
+      background: #009edb;
+    }
+
+    .modal-close-btn {
+      background: #f44336;
+    }
+
+    .modal-close-btn:hover {
+      background: #d32f2f;
+    }
+
+    #errorMessage {
+      color: red;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-squares">
+    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <h2>Rewind</h2>
+    <button id="usersBtn"><i class="fas fa-users"></i> &nbsp; Users</button>
+    <button id="auditBtn"><i class="fas fa-clipboard-list"></i> &nbsp; Audit Log</button>
+    <button id="settingsBtn"><i class="fas fa-cogs"></i> &nbsp; Settings</button>
+  </div>
+
+  <div class="top-bar">
+    RewindDashboard 1.0.0 - Beta
+  </div>
+
+  <div class="center-login-box" id="loginBox">
+    <h3>Enter Login Key</h3>
+    <input type="password" id="loginKeyInput" placeholder="Enter key..." />
+    <span class="error-msg" id="errorMsg">Invalid login key</span>
+    <button onclick="validateKey()">Login</button>
+  </div>
+
+  <script>
+    let loginKey = "";
+    let allUsers = [];
+    let allLogs = [];
+    let currentFilter = "all";
+
+    async function validateKey() {
+      const input = document.getElementById('loginKeyInput').value.trim();
+      const error = document.getElementById('errorMsg');
+      const loginBox = document.getElementById('loginBox');
+      const mainDashboard = document.getElementById('mainDashboard');
+      const sidebar = document.getElementById('sidebar');
+
+      error.style.display = 'none';
+      if (!input) {
+        error.textContent = 'Please enter a key.';
+        error.style.display = 'block';
+        return;
+      }
+
+      try {
+        const res = await fetch("/api/v2/admin/verify", {
+          method: "GET",
+          headers: { "X-Admin-Key": input }
+        });
+
+        if (res.status === 200) {
+          loginKey = input;
+
+          document.cookie = `admin_key=${input}; path=/; secure; samesite=strict`;
+          window.location.href = "/api/v2/admin/maindash";
+        } else {
+          error.textContent = res.status === 401 ? 'Invalid login key' : 'Server error. Try again.';
+          error.style.display = 'block';
+        }
+      } catch {
+        error.textContent = 'Network error. Check your connection.';
+        error.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
